@@ -14,6 +14,7 @@ function printAmount (price) {
 
 
 while (amount < bankAccountBalance) {
+     // keep buying phones
      amount = amount + phonePrice;
 
      if (amount < spendingThreshold) {
