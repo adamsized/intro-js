@@ -3,16 +3,12 @@
 
 
 const phonePrice = 200;
-
 const accessoryPrice = 10;
-
 const spendingThreshold = 400;
-
 var tax = 0.7;
-
 var phoneCount = 0;
-
 var accessoryCount = 0;
+var total = 0;
 
 function totalPrice (price) {
 
@@ -21,43 +17,25 @@ function totalPrice (price) {
      return total.toFixed(2);
 
 }
-
 var bankAccount = prompt('Ready to buy some phones? Enter your bank account balance.');
-while (true) {
 
-
+while ( total < bankAccount) {
      bankAccount = Number(bankAccount);
 
-     var subtotal = phonePrice + (accessoryPrice * 3);
+     var subtotal = phonePrice;
      if (subtotal < spendingThreshold) {
-          console.log("this is subtotal with phone and accesories: $" + String(subtotal.toFixed(2)));
+          subtotal = subtotal + accessoryPrice;
      }
 
-     var total = totalPrice(subtotal);
+     total = totalPrice(subtotal);
 
-     if (bankAccount < total) {
-          console.log('sorry you cannot afford it');
-          console.log("you've bought " + phoneCount + " phones" );
-          console.log("you've bought " + accessoryCount + " accessories" );
-          break;
-     } else {
-          bankAccount = bankAccount - total;
-          phoneCount = phoneCount + 1;
-          accessoryCount = accessoryCount + 3;
-     }
+     bankAccount = bankAccount - total;
+     phoneCount = phoneCount + 1;
+     accessoryCount = accessoryCount + 1;
 
-     console.log("your bank balance is: $" + String(bankAccount.toFixed(2)));
+     console.log('this is' + String(bankAccount));
+
 }
 
-
-
-
-
-
-
-// while (true){
-//      if (bankAccount < phonePrice) {
-//           console.log("sorry, you can't afford a phone.");
-//      }
-
-// }
+console.log('sorry you cannot afford it');
+console.log("you've bought " + phoneCount + " phones and " + accessoryCount + " accessories" );
